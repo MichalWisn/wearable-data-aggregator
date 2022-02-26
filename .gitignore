@@ -1,0 +1,11 @@
+# local env variables
+.env
+
+# modules
+node_modules
+
+# build artifacts
+lib
+
+# logs
+*.log

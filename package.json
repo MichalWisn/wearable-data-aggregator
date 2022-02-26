@@ -1,0 +1,35 @@
+{
+  "name": "health-data-charts",
+  "description": "integration of wearable data",
+  "author": "github.com/MichalWisn",
+  "license": "UNLICENSED",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.6.3",
+    "express": "^4.17.3",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1",
+    "graphql": "^16.3.0",
+    "node-fetch": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "dotenv": "^16.0.0",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": "16"
+  }
+}
