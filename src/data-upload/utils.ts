@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 export const fetchData = async <ResultType>(
   endpoint: string,
-  token: string
+  token: string,
 ): Promise<ResultType> => {
   let body;
   try {
@@ -13,6 +13,7 @@ export const fetchData = async <ResultType>(
     });
     body = await response.json();
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(`Error fetchin data for ${endpoint} |`, err);
   }
   // node-fetch does not support generics

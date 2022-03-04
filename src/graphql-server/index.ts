@@ -1,11 +1,11 @@
-// For accessing Firestore database
 import admin from 'firebase-admin';
 
 import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
 
-// Will initialize with default settings and database
+// initialize app once
 admin.initializeApp();
+
 const db = admin.firestore();
 
 // TODO: Refactor that POC
@@ -27,9 +27,9 @@ const fetchAllUsers = async (callback: any) => {
     .then((item: any) => {
       const items: any = [];
       console.log({ item });
-      item.docs.forEach((item: any) => {
-        console.log({ item });
-        items.push(item.data());
+      item.docs.forEach((t: any) => {
+        console.log({ t });
+        items.push(t.data());
       });
       return callback(items);
     })
@@ -38,13 +38,11 @@ const fetchAllUsers = async (callback: any) => {
 
 const resolvers = {
   Query: {
-    users: () => {
-      return new Promise((resolve, reject) => {
-        fetchAllUsers((data: any) => {
-          resolve(data);
-        });
+    users: () => new Promise((resolve) => {
+      fetchAllUsers((data: any) => {
+        resolve(data);
       });
-    },
+    }),
   },
 };
 
